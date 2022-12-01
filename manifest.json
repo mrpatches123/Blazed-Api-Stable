@@ -1,0 +1,54 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Non-Beta API",
+        "description": "The Non-Beta Scripting API",
+        "uuid": "5fb957a3-1979-4f4c-971d-d8ed3295192b",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            19,
+            50
+        ]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "43cebd90-3a1f-424a-b8a4-2d33687dc50c",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        },
+        {
+            "uuid": "2756f05e-f9ee-44b8-b3e9-a199c904bd1c",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "type": "script",
+            "language": "javascript",
+            "entry": "scripts/index.js"
+        }
+    ],
+    "metadata": {
+        "authors": [
+            "Pastebin#8616",
+            "raptor#4545",
+            "iBlqzed#3612"
+        ],
+        "url": "http://radiantnet.xyz"
+    },
+    "dependencies": [
+        {
+            "module_name": "@minecraft/server",
+            "version": "1.0.0"
+        }
+    ]
+}
