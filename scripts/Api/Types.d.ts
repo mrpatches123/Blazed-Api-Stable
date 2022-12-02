@@ -82,6 +82,34 @@ export declare type EntityQueryOptions = {
 export declare type Effects = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "poison" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "village_hero" | "water_breathing" | "weakness" | "wither";
 export declare type Dimensions = "overworld" | "nether" | "the end";
 export declare type Time = "sunrise" | "day" | "noon" | "sunset" | "night" | "midnight" | number;
+export declare type MusicOptions = {
+    /**
+     * Specifies a fade overlap for music at the end of play.
+     */
+    fade?: number;
+    /**
+     * If set to true, this music track will play repeatedly.
+     */
+    loop?: boolean;
+    /**
+     * Relative volume level of the music.
+     */
+    volume?: number;
+};
+export declare type SoundOptions = {
+    /**
+     * Specifies a location of where to play a particular sound.
+     */
+    location?: Vec3;
+    /**
+     * Pitch adjustment level for the sound.
+     */
+    pitch?: number;
+    /**
+     * Relative volume level of the sound.
+     */
+    volume?: number;
+};
 export interface CommandInfo {
     /**
      * The name of the command

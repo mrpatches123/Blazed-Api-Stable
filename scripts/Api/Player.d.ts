@@ -1,5 +1,5 @@
 import { Player as IPlayer } from "@minecraft/server";
-import { Dimensions, Effects, Gamemode, Vec3 } from "./Types";
+import { Dimensions, Effects, Gamemode, SoundOptions, Vec3 } from "./Types";
 export declare class Player {
     protected player: IPlayer;
     constructor(player: IPlayer);
@@ -98,6 +98,12 @@ export declare class Player {
      * @param {string | number | symbol} message Message to send to the player
      */
     message(message: string | number | symbol): void;
+    /**
+     * Plays a sound that only this particular player can hear
+     * @param {string} soundId The id of the sound to player
+     * @param {SoundOptions} soundOptions Aditional sound options
+     */
+    playSound(soundId: string, soundOptions?: SoundOptions): void;
     /**
      * Remove a score from an objective
      * @param {string} objective Objective to remove the score from

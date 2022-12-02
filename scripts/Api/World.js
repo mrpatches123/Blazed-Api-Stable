@@ -36,6 +36,36 @@ class World {
         v.runCommandAsync(`time set ${timeOfDay}`);
     }
     /**
+     * Plays a particular track for all players
+     * @param {string} musicId The id of the track to play
+     * @param {MusicOptions} musicOptions Aditional music options
+     */
+    playMusic(musicId, musicOptions) {
+        v.runCommandAsync(`music play ${musicId} ${musicOptions?.volume ?? "1"} ${musicOptions?.fade ?? "0"} ${musicOptions?.loop ? "loop" : "only_once"}`);
+    }
+    /**
+     * Queues an additional music track for all players. if a track is not playing, a music track will play
+     * @param {string} musicId The id of the track to queue
+     * @param {MusicOptions} musicOptions Aditional music options
+     */
+    queueMusic(musicId, musicOptions) {
+        v.runCommandAsync(`music queue ${musicId} ${musicOptions?.volume ?? "1"} ${musicOptions?.fade ?? "0"} ${musicOptions?.loop ? "loop" : "only_once"}`);
+    }
+    /**
+     * Stops any music tracks from playing
+     */
+    stopMusic() {
+        v.runCommandAsync('music stop');
+    }
+    /**
+     * Plays a sound for all players
+     * @param {string} soundId The id of the sound to play
+     * @param {SoundOptions} soundOptions Aditional sound options
+     */
+    playSound(soundId, soundOptions) {
+        v.runCommandAsync(`execute as @a at @s run playsound ${soundId} @s ${soundOptions?.location ? `${soundOptions.location.x} ${soundOptions.location.y} ${soundOptions.location.z}` : `~~~`} ${soundOptions?.volume ?? '1'} ${soundOptions?.pitch ?? "1"}`);
+    }
+    /**
      * Get all players, with custom query options
      * @param {EntityQueryOptions} options The query options
      * @returns {Player[]} All players that match the query options
@@ -48,21 +78,21 @@ class World {
             plrs.forEach(async (plr, i) => {
                 let cmd = `testfor @s[`;
                 if (options.name)
-                    cmd += `name=${options.name},`;
+                    cmd += `name = ${options.name}, `;
                 else if (options.excludeNames)
-                    options.excludeNames.forEach(name => cmd += `name=!${name},`);
+                    options.excludeNames.forEach(name => cmd += `name = !${name}, `);
                 if (options.gameMode)
-                    cmd += `m=${options.gameMode},`;
+                    cmd += `m = ${options.gameMode}, `;
                 else if (options.excludeGameModes)
-                    options.excludeGameModes.forEach(gm => cmd += `m=!${gm},`);
+                    options.excludeGameModes.forEach(gm => cmd += `m = !${gm}, `);
                 if (options.tags)
-                    cmd += options.tags.forEach(tag => `tag=${tag},`);
+                    cmd += options.tags.forEach(tag => `tag = ${tag}, `);
                 else if (options.excludeTags)
-                    options.excludeTags.forEach(tag => cmd += `tag=!${tag},`);
+                    options.excludeTags.forEach(tag => cmd += `tag = !${tag}, `);
                 if (options.location) {
-                    cmd += `x=${Math.floor(options.location.x)},y=${Math.floor(options.location.y)},y=${Math.floor(options.location.y)},`;
+                    cmd += `x = ${Math.floor(options.location.x)}, y = ${Math.floor(options.location.y)}, y = ${Math.floor(options.location.y)}, `;
                     if (options.closest)
-                        cmd += `c=${options.closest},`;
+                        cmd += `c = ${options.closest}, `;
                 }
                 plr.runCommandAsync(cmd.slice(0, -1) + "]").then(() => plrArr.push(new Player(plr))).finally(() => (++i === len) && e(plrArr));
             });
@@ -81,7 +111,7 @@ class World {
      * @param {string | number | symbol} message Message to broadcast
      */
     broadcast(message) {
-        v.runCommandAsync(`tellraw @a {"rawtext":[{"text":"${message.toString()}"}]}`);
+        v.runCommandAsync(`tellraw @a { "rawtext": [{ "text": "${message.toString()}" }] } `);
     }
 }
 export const world = new World();

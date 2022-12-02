@@ -154,6 +154,14 @@ export class Player {
         this.player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${message.toString()}"}]}`);
     }
     /**
+     * Plays a sound that only this particular player can hear
+     * @param {string} soundId The id of the sound to player
+     * @param {SoundOptions} soundOptions Aditional sound options
+     */
+    playSound(soundId, soundOptions) {
+        this.player.runCommandAsync(`playsound ${soundId} @s ${soundOptions?.location ? `${soundOptions.location.x} ${soundOptions.location.y} ${soundOptions.location.z}` : `~~~`} ${soundOptions?.volume ?? '1'} ${soundOptions?.pitch ?? "1"}`);
+    }
+    /**
      * Remove a score from an objective
      * @param {string} objective Objective to remove the score from
      * @param {number} score Amount to remove from the objective
