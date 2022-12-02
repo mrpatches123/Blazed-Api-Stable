@@ -1,23 +1,33 @@
-import { CommandHandler } from "./CommandHandler";
+import { CommandManager } from "./CommandHandler";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
 import { Player } from "./Player";
-import { Dimensions, EntityQueryOptions } from "./Types";
+import { ScoreboardManager } from "./ScoreboardManager";
+import { Dimensions, EntityQueryOptions, Time } from "./Types";
 declare class World {
+    /**
+     * A custom commmand handler
+     */
+    readonly commands: CommandManager;
     /**
      * A set of events to run code
      */
     readonly events: Events;
     /**
-     * A custom commmand handler
+     * The world scoreboard manager
      */
-    readonly commands: CommandHandler;
+    readonly scoreboard: ScoreboardManager;
     /**
      * Run a command async
      * @param {string} command Command to run
      * @returns {Promise<boolean>} Whether or not there was an error
      */
     runCommandAsync(command: string): Promise<boolean>;
+    /**
+     * Set the world's time
+     * @param {Time} timeOfDay The time
+     */
+    setTime(timeOfDay: Time): void;
     /**
      * Get all players, with custom query options
      * @param {EntityQueryOptions} options The query options

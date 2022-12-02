@@ -81,6 +81,7 @@ export declare type EntityQueryOptions = {
 };
 export declare type Effects = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "poison" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "village_hero" | "water_breathing" | "weakness" | "wither";
 export declare type Dimensions = "overworld" | "nether" | "the end";
+export declare type Time = "sunrise" | "day" | "noon" | "sunset" | "night" | "midnight" | number;
 export interface CommandInfo {
     /**
      * The name of the command

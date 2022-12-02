@@ -1,5 +1,6 @@
 import { system, world } from "@minecraft/server";
-export { world } from "./Client.js";
+export { world } from "./World.js";
+export { system } from "./System.js";
 export { Player } from "./Player.js";
 export * from "./Types.js";
 system.run(() => {

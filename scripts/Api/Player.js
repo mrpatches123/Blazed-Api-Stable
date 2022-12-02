@@ -95,6 +95,10 @@ export class Player {
     getIPlayer() {
         return this.player;
     }
+    /**
+     * Get the player's location
+     * @returns {Promise<Vec3>} The player's location
+     */
     async getLocation() {
         return {
             x: await this.getScore("API_X"),

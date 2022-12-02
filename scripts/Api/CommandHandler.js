@@ -1,5 +1,5 @@
 export const commands = {};
-export class CommandHandler {
+export class CommandManager {
     /**
      * Create a custom command
      * @param {CommandInfo} info The command info

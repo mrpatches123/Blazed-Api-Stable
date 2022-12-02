@@ -1,19 +1,24 @@
 import { world as Iworld } from "@minecraft/server";
-import { CommandHandler } from "./CommandHandler";
+import { CommandManager } from "./CommandHandler";
 import { Dimension } from "./Dimension";
 import { Events } from "./Events/Events";
 import { Player } from "./Player";
+import { ScoreboardManager } from "./ScoreboardManager";
 const v = Iworld.getDimension("overworld");
 class World {
     constructor() {
+        /**
+         * A custom commmand handler
+         */
+        this.commands = new CommandManager();
         /**
          * A set of events to run code
          */
         this.events = new Events();
         /**
-         * A custom commmand handler
+         * The world scoreboard manager
          */
-        this.commands = new CommandHandler();
+        this.scoreboard = new ScoreboardManager();
     }
     /**
      * Run a command async
@@ -22,6 +27,13 @@ class World {
      */
     runCommandAsync(command) {
         return new Promise(e => v.runCommandAsync(command).then(() => e(true)).catch(() => e(false)));
+    }
+    /**
+     * Set the world's time
+     * @param {Time} timeOfDay The time
+     */
+    setTime(timeOfDay) {
+        v.runCommandAsync(`time set ${timeOfDay}`);
     }
     /**
      * Get all players, with custom query options

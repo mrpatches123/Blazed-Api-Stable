@@ -61,6 +61,10 @@ export declare class Player {
      * @returns {IPlayer} The IPlayer
      */
     getIPlayer(): IPlayer;
+    /**
+     * Get the player's location
+     * @returns {Promise<Vec3>} The player's location
+     */
     getLocation(): Promise<Vec3>;
     /**
      * Get the player's name

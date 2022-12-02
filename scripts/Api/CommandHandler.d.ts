@@ -2,7 +2,7 @@ import { CommandData, CommandInfo } from "./Types";
 export declare const commands: {
     [key: string]: CommandData;
 };
-export declare class CommandHandler {
+export declare class CommandManager {
     /**
      * Create a custom command
      * @param {CommandInfo} info The command info

@@ -1,3 +1,3 @@
-tag @a add dead
-tag @e[type=player] remove dead
+tag @a add API_DEAD
+tag @e[type=player] remove API_DEAD
 execute as @a at @s run function api2
