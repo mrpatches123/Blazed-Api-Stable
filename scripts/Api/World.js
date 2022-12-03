@@ -20,6 +20,9 @@ class World {
          */
         this.scoreboard = new ScoreboardManager();
     }
+    getAllPlayers() {
+        return Iworld.getAllPlayers().map(player => new Player(player));
+    }
     /**
      * Run a command async
      * @param {string} command Command to run

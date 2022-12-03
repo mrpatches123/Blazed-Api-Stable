@@ -17,6 +17,8 @@ declare class World {
      * The world scoreboard manager
      */
     readonly scoreboard: ScoreboardManager;
+
+    getAllPlayers(): Array<Player>;
     /**
      * Run a command async
      * @param {string} command Command to run
@@ -69,4 +71,4 @@ declare class World {
     broadcast(message: string | number | symbol): void;
 }
 export declare const world: World;
-export {};
+export { };

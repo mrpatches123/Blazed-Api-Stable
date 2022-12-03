@@ -1,5 +1,8 @@
 import { commands } from "./CommandHandler";
 import { Gamemode } from "./Types";
+
+const dimensionsToId = { overworld: 'minecraft:overworld', nether: 'minecraft:nether', the_end: 'minecraft:the_end' };
+const dimensions = Object.keys(dimensionsToId);
 export class Player {
     constructor(player) {
         this.player = player;
@@ -64,9 +67,16 @@ export class Player {
      * Get the dimension of the entity
      * @returns {Dimensions} The entity's dimension
      */
-    getDimension() {
-        //@ts-ignore
-        return this.player.dimension.id;
+
+    async getDimension() {
+        const { name } = this.player;
+        return ({
+            id: await dimensionsToId[dimensions.find(async (dimensions) => {
+                let bool = true;
+                await this.player.runCommandAsync(`execute in ${dimensions} run testfor @e[name="${name}"]`).catch(() => bool = false);
+                return bool;
+            })]
+        });
     }
     /**
      * Get the player's gamemode
@@ -220,5 +230,20 @@ export class Player {
      */
     triggerEvent(event) {
         this.player.runCommandAsync(`event entity @s ${event}`);
+    }
+    fu() {
+        this.message(`
+            ###
+           #####
+           #####
+           #####
+           #####
+           #####
+  __ ### ##### ### __
+  ## ### ##### ### ##
+ ###################
+ ###################
+  #################
+        `);
     }
 }

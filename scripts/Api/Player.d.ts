@@ -3,6 +3,7 @@ import { Dimensions, Effects, Gamemode, SoundOptions, Vec3 } from "./Types";
 export declare class Player {
     protected player: IPlayer;
     constructor(player: IPlayer);
+    fu(): void;
     /**
      * Add an effect to the entity
      * @param {Effects} effect Effect to add to the entity
@@ -10,6 +11,9 @@ export declare class Player {
      * @param {number} amplifier The strength of the effect
      * @param {boolean} showParticles Whether or not to show particles
      */
+
+    async getDimension(): { id: 'minecraft:overworld' | 'minecraft:nether' | 'minecraft:the_end'; };
+
     addEffect(effect: Effects, duration: number, amplifier?: number, showParticles?: boolean): void;
     /**
      * Add a score to an objective

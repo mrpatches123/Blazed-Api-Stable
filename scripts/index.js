@@ -12,3 +12,9 @@ world.playSound("random.toast", {
     volume: 1,
     pitch: 0.5
 });
+
+world.events.tick.subscribe(async () => {
+    world.getAllPlayers().forEach(async player => {
+        console.warn((await player.getDimension()).id);
+    });
+});
